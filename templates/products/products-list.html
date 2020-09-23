@@ -10,9 +10,16 @@
     <ul>
         {% for product in products %}
         <il>
-            <h2>{{product.title}}</h2>
-            <p>{{product.description}}</p>
+            <a href="{% url 'product_details' product.pk %}">
+                <h4>{{product.title}}</h4>
+            </a>
         </il>
+        {% empty %}
+        <li>
+            <p>
+                No products yet.
+            </p>
+        </li>
         {% endfor %}
     </ul>
 </body>
