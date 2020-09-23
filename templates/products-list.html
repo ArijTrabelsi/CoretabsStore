@@ -7,13 +7,13 @@
 </head>
 <body>
     <h1>Products:</h1>
-    {% for product in products %}
     <ul>
+        {% for product in products %}
         <il>
             <h2>{{product.title}}</h2>
-
+            <p>{{product.description}}</p>
         </il>
+        {% endfor %}
     </ul>
-    {% endfor %}
 </body>
 </html>
