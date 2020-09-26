@@ -122,4 +122,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
