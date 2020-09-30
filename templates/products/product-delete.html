@@ -11,8 +11,9 @@
     <br>
     <form action="" method="POST">
         {% csrf_token %} 
-        <strong>Are you sure?!</strong><br><br>
-        <input type="submit" value="Delete"/>
+        <strong>Are you want to delete this item ?</strong><br><br>
+        <input type="submit" value="Yes" /> 
+		<a href="/">Cancel </a>
     </form>
 </body>
 </html>

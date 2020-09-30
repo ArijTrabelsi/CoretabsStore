@@ -16,7 +16,9 @@
             </a>
             <div>{{product.price}}</div>
             <br><br>
+            
         </il>
+        
         {% empty %}
         <li>
             <p>
@@ -24,6 +26,7 @@
             </p>
         </li>
         {% endfor %}
+        <a href="{% url 'product_add' %}">Add Product</a>
     </ul>
 </body>
 </html>
