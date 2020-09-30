@@ -6,8 +6,11 @@
     <title>Product Details</title>
 </head>
 <body>
+    <div>{{product.brand}}</div>
     <h1>{{product.title}}</h1>
     <p>{{product.description}}</p>
+    <div>{{product.price}}</div>
+    <br>
     <a href="{% url 'products_list' %}">
         Back to the products page
     </a>
