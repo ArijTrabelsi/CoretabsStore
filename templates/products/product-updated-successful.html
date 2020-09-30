@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Updated Successfully</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block head_title %}Successfully Updated{% endblock %}
+
+{% block content %}
+
     <h1>Product updated successfully!</h1>
     <a href="{% url 'home' %}">Continue to homepage</a>
-</body>
-</html>
+
+{% endblock %}
