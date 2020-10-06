@@ -56,10 +56,13 @@ def product_edit(request, pk):
 
 
 def product_delete(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+    if request.user.is_authenticated and request.user.is_superuser:
+        product = get_object_or_404(Product, pk=pk)
 
-    if request.method == 'POST':
-        product.delete()
-        return render(request, 'products/product-deleted-successful.html')
+        if request.method == 'POST':
+            product.delete()
+            return render(request, 'products/product-deleted-successful.html')
     
-    return render(request, 'products/product-delete.html')
+        return render(request, 'products/product-delete.html')
+    else:
+        return redirect('products_list')
