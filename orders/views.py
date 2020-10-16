@@ -5,13 +5,13 @@ from .models import Order
 from .forms import OrderForm
 from .utils import send_order_email
 
-# Create your views here.
+
 @login_required
 def order(request):
     user = request.user
 
     if not user.cart.items.exists():
-        return redirect('products_list')
+        return redirect('product_list')
 
     if request.method == 'POST':
         form = OrderForm(request.POST, request.FILES)
@@ -31,4 +31,4 @@ def order_list(request):
         orders = Order.objects.all()
         return render(request, 'orders/order_list.html', {'orders': orders})
     else:
-        return redirect('products_list')
+        return redirect('product_list')

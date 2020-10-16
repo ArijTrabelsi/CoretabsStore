@@ -1,14 +1,13 @@
+
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.db.models import Sum
 
 from products.models import Product
 
 User = get_user_model()
 
-# Create your models here.
 
 class Cart(models.Model):
     user = models.OneToOneField(User, related_name='cart', on_delete=models.CASCADE)
@@ -16,14 +15,14 @@ class Cart(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def total_price(self):
-        total = self.user.cart.items.aggregate(
-            total_price=Sum('price'))
+        total = 0
+        for item in self.items.all():
+            total += item.price
 
-        return total['total_price']
-
+        return total
 
     def __str__(self):
-        return str(self.user)
+        return f'{self.user}'
 
 
 @receiver(post_save, sender=User)
