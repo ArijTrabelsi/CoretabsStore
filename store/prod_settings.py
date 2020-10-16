@@ -6,11 +6,7 @@ from .settings import *
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-debug_option = os.environ.get('DEBUG').lower()
-if debug_option == 'true':
-    DEBUG = True
-else:
-    DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['afternoon-everglades-55160.herokuapp.com']
 
