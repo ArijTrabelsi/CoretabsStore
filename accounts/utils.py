@@ -12,10 +12,10 @@ def send_confirmation_email(request, user):
     subject = 'Activate Your Account'
     message = render_to_string('registration/account_activation_email.html',
                                 {
-                                'user':user,
-                                'domain':"127.0.0.1:8000",
-                                'uid':uid,
-                                'token':token,
+                                'user': user,
+                                'domain': domain,
+                                'uid': uid,
+                                'token': token,
                                 })
 
     user.email_user(subject, message)
