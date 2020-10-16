@@ -19,6 +19,7 @@ from django.shortcuts import redirect
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 def home(request):
     return redirect('products_list')
 
@@ -29,4 +30,8 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('carts.urls')),
     path('', include('orders.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+if settings.DEBUG:
+    urlpattrens += static(settings.MEDIA_URL,
+                         document_root=settings.MEDIA_ROOT)
