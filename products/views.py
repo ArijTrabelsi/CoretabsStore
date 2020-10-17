@@ -9,7 +9,7 @@ def products_list(request):
     context = {
         'products': products,
     }
-    return render(request, 'products/product-details.html', context)
+    return render(request, 'products/products-list.html', context)
 
 def product_details(request, pk):
     product = get_object_or_404(Product, pk=pk)
@@ -44,12 +44,12 @@ def product_edit(request, pk):
 
             if form.is_valid():
                 form.save()
-                return render(request, 'products/product-updated-successful.html')
+                return render(request, 'products/product-add-successful.html')
 
         else:
             form = AddProductForm(instance=product)
     
-        return render(request, 'products/product-edit.html', {'form' : form})
+        return render(request, 'products/product-add.html', {'form' : form})
     else:
         return redirect('products_list')
 
@@ -58,11 +58,7 @@ def product_edit(request, pk):
 def product_delete(request, pk):
     if request.user.is_authenticated and request.user.is_superuser:
         product = get_object_or_404(Product, pk=pk)
-
-        if request.method == 'POST':
-            product.delete()
-            return render(request, 'products/product-deleted-successful.html')
-    
-        return render(request, 'products/product-delete.html')
+        product.delete()
+        return redirect('products_list')
     else:
         return redirect('products_list')
